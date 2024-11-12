@@ -1,0 +1,15 @@
+# .NET
+bin/
+obj/
+*.user
+*.userosscache
+*.suo
+.vs/
+
+## AWS credentials
+.aws/
+
+## Environment variables
+*.env
+appsettings.json
+appsettings.*.json
