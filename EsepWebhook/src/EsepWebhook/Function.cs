@@ -17,12 +17,12 @@ public class Function
     /// <param name="context">The ILambdaContext that provides methods for logging and describing the Lambda environment.</param>
     /// <returns></returns>
 
-    public string FunctionHandler(string input, ILambdaContext context)
+    public string FunctionHandler(object input, ILambdaContext context)
     {
         context.Logger.LogInformation($"FunctionHandler received: {input}");
         dynamic json = JsonConvert.DeserializeObject<dynamic>(input.ToString());
         string payload = $"{{'text':'Issue Created: {json.issue.html_url}'}}";
-    
+        
         var client = new HttpClient();
         var webRequest = new HttpRequestMessage(HttpMethod.Post, Environment.GetEnvironmentVariable("SLACK_URL"))
         {
